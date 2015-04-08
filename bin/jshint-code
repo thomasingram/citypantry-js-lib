@@ -1,0 +1,4 @@
+#!/bin/bash
+./node_modules/jshint/bin/jshint \
+    --config="etc/jshint-code.json" \
+    src/

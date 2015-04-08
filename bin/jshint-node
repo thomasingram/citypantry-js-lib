@@ -1,0 +1,5 @@
+#!/bin/bash
+./node_modules/jshint/bin/jshint \
+    --config="etc/jshint-node.json" \
+    tests/unit \
+    Gruntfile.js

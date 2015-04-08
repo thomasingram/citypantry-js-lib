@@ -3,7 +3,8 @@
   "title": "CityPantry JS Library",
   "scripts": {
     "test": "node_modules/karma/bin/karma start tests/etc/karma.conf.js",
-    "build-test": "grunt && npm run test"
+    "build-test": "grunt && npm run test",
+    "install-pre-commit": "ln -s ../../bin/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit"
   },
   "url": "https://citypantry.com/",
   "copyright": "2015",

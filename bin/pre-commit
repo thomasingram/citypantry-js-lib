@@ -1,0 +1,18 @@
+#!/bin/bash
+# Pre-commit Git hook.
+# Runs JSHint on JavaScript files.
+#
+# If you absolutely must commit without testing,
+# use: git commit --no-verify
+
+./bin/jshint-code
+if [ $? -ne 0 ];
+then
+    exit 1
+fi
+
+./bin/jshint-node
+if [ $? -ne 0 ];
+then
+    exit 1
+fi
