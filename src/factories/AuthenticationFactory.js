@@ -1,11 +1,11 @@
-angular.module('cpLib').factory('AuthenticationFactory', function(ApiService, API_BASE) {
+angular.module('cpLib').factory('AuthenticationFactory', function(ApiService) {
     return {
-        login: loginDetails => ApiService.post(`${API_BASE}/user/login`, loginDetails),
+        login: loginDetails => ApiService.post(`/user/login`, loginDetails),
 
-        register: registerDetails => ApiService.post(`${API_BASE}/user/register`, registerDetails),
+        register: registerDetails => ApiService.post(`/user/register`, registerDetails),
 
-        requestResetEmail: email => ApiService.post(`${API_BASE}/user/request-reset-email`, email),
+        requestResetEmail: email => ApiService.post(`/user/request-reset-email`, email),
 
-        setPassword: resetDetails => ApiService.post(`${API_BASE}/user/set-password`, resetDetails)
+        setPassword: resetDetails => ApiService.post(`/user/set-password`, resetDetails)
     };
 });

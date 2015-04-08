@@ -1,12 +1,12 @@
-angular.module('cpLib').factory('VendorsFactory', function(ApiService, API_BASE, $q) {
+angular.module('cpLib').factory('VendorsFactory', function(ApiService, $q) {
     return {
-        getAllVendors: () => ApiService.get(`${API_BASE}/vendors`),
+        getAllVendors: () => ApiService.get(`/vendors`),
 
-        getAllActiveAndApprovedVendors: () => ApiService.get(`${API_BASE}/vendors/all-active-and-approved`),
+        getAllActiveAndApprovedVendors: () => ApiService.get(`/vendors/all-active-and-approved`),
 
-        getVendor: (idOrSlug) => ApiService.get(`${API_BASE}/vendors/${idOrSlug}`),
+        getVendor: (idOrSlug) => ApiService.get(`/vendors/${idOrSlug}`),
 
-        getAddresses: () => ApiService.get(`${API_BASE}/addresses`),
+        getAddresses: () => ApiService.get(`/addresses`),
 
         getAddressById: id => {
             const pluckMatchingAddress = response => {
@@ -21,17 +21,17 @@ angular.module('cpLib').factory('VendorsFactory', function(ApiService, API_BASE,
                 }
             };
 
-            return ApiService.get(`${API_BASE}/addresses`).then(pluckMatchingAddress);
+            return ApiService.get(`/addresses`).then(pluckMatchingAddress);
         },
 
-        getBusinessTypes: () => ApiService.get(`${API_BASE}/business-types`),
+        getBusinessTypes: () => ApiService.get(`/business-types`),
 
-        updateVendor: (id, updatedVendor) => ApiService.put(`${API_BASE}/vendors/${id}`, updatedVendor),
+        updateVendor: (id, updatedVendor) => ApiService.put(`/vendors/${id}`, updatedVendor),
 
-        updateSelf: (updatedVendor) => ApiService.put(`${API_BASE}/vendors/me`, updatedVendor),
+        updateSelf: (updatedVendor) => ApiService.put(`/vendors/me`, updatedVendor),
 
-        deleteVendor: (id) => ApiService.delete(`${API_BASE}/vendors/${id}`),
+        deleteVendor: (id) => ApiService.delete(`/vendors/${id}`),
 
-        approveVendor: (id) => ApiService.put(`${API_BASE}/vendors/${id}/approve`)
+        approveVendor: (id) => ApiService.put(`/vendors/${id}/approve`)
     };
 });

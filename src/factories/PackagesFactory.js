@@ -1,44 +1,44 @@
-angular.module('cpLib').factory('PackagesFactory', function(API_BASE, ApiService,
+angular.module('cpLib').factory('PackagesFactory', function(ApiService,
         getPackagingTypeTextFilter) {
     return {
-        getAllPackages: () => ApiService.get(`${API_BASE}/packages`),
+        getAllPackages: () => ApiService.get(`/packages`),
 
-        getPackage: id => ApiService.get(`${API_BASE}/packages/${id}`),
+        getPackage: id => ApiService.get(`/packages/${id}`),
 
-        getPackageByHumanId: humanId => ApiService.get(`${API_BASE}/packages/${humanId}`),
+        getPackageByHumanId: humanId => ApiService.get(`/packages/${humanId}`),
 
-        createPackage: packageDetails => ApiService.post(`${API_BASE}/packages`, packageDetails),
+        createPackage: packageDetails => ApiService.post(`/packages`, packageDetails),
 
-        updatePackage: (id, updatedPackage) => ApiService.put(`${API_BASE}/packages/${id}`, updatedPackage),
+        updatePackage: (id, updatedPackage) => ApiService.put(`/packages/${id}`, updatedPackage),
 
-        deletePackage: id => ApiService.delete(`${API_BASE}/packages/${id}`),
+        deletePackage: id => ApiService.delete(`/packages/${id}`),
 
         searchPackages(name = '', postcode = '', maxBudget = '', headCount = '', time = '', date = '',
                 eventTypeId = '', cuisineTypeId = '') {
-            const url = `${API_BASE}/packages/search?name=${name}&postcode=${postcode}` +
+            const url = `/packages/search?name=${name}&postcode=${postcode}` +
                 `&maxBudget=${maxBudget}&headCount=${headCount}&time=${time}&date=${date}` +
                 `&eventTypeId=${eventTypeId}&cuisineTypeId=${cuisineTypeId}`;
 
             return ApiService.get(url);
         },
 
-        getPackagesByVendor: id => ApiService.get(`${API_BASE}/packages/search/all?vendorId=${id}`),
+        getPackagesByVendor: id => ApiService.get(`/packages/search/all?vendorId=${id}`),
 
-        getPackagesByCurrentVendor: () => ApiService.get(`${API_BASE}/packages/by-current-vendor`),
+        getPackagesByCurrentVendor: () => ApiService.get(`/packages/by-current-vendor`),
 
-        getPackageReviews: id => ApiService.get(`${API_BASE}/reviews/package/${id}`),
+        getPackageReviews: id => ApiService.get(`/reviews/package/${id}`),
 
-        getSimilarPackages: id => ApiService.get(`${API_BASE}/packages/${id}/similar`),
+        getSimilarPackages: id => ApiService.get(`/packages/${id}/similar`),
 
-        approvePackage: (id) => ApiService.put(`${API_BASE}/packages/${id}/approve`),
+        approvePackage: (id) => ApiService.put(`/packages/${id}/approve`),
 
-        getAllergenTypes: () => ApiService.get(`${API_BASE}/allergen-types`),
+        getAllergenTypes: () => ApiService.get(`/allergen-types`),
 
-        getDietaryTypes: () => ApiService.get(`${API_BASE}/dietary-requirements`),
+        getDietaryTypes: () => ApiService.get(`/dietary-requirements`),
 
-        getEventTypes: () => ApiService.get(`${API_BASE}/event-types`),
+        getEventTypes: () => ApiService.get(`/event-types`),
 
-        getCuisineTypes: () => ApiService.get(`${API_BASE}/cuisine-types`),
+        getCuisineTypes: () => ApiService.get(`/cuisine-types`),
 
         getDeliveryDayOptions: () => {
             return [
@@ -160,8 +160,8 @@ angular.module('cpLib').factory('PackagesFactory', function(API_BASE, ApiService
             return options;
         },
 
-        checkIfPackageCanBeDeliveredToPostcode: (id, postcode) => ApiService.get(`${API_BASE}/packages/${id}/availability?postcode=${postcode}`),
+        checkIfPackageCanBeDeliveredToPostcode: (id, postcode) => ApiService.get(`/packages/${id}/availability?postcode=${postcode}`),
 
-        checkIfPackageCanBeDelivered: (id, dateTime, postcode) => ApiService.get(`${API_BASE}/packages/${id}/availability?dateTime=${dateTime}&postcode=${postcode}`)
+        checkIfPackageCanBeDelivered: (id, dateTime, postcode) => ApiService.get(`/packages/${id}/availability?dateTime=${dateTime}&postcode=${postcode}`)
     };
 });

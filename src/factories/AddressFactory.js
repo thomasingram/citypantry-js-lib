@@ -1,11 +1,11 @@
-angular.module('cpLib').factory('AddressFactory', function(ApiService, API_BASE) {
+angular.module('cpLib').factory('AddressFactory', function(ApiService) {
     return {
-        getAddresses: () => ApiService.get(`${API_BASE}/addresses`),
+        getAddresses: () => ApiService.get(`/addresses`),
 
-        createAddress: (address) => ApiService.post(`${API_BASE}/addresses`, {address: address}),
+        createAddress: (address) => ApiService.post(`/addresses`, {address: address}),
 
-        updateAddress: (id, updatedAddress) => ApiService.put(`${API_BASE}/addresses/${id}`, updatedAddress),
+        updateAddress: (id, updatedAddress) => ApiService.put(`/addresses/${id}`, updatedAddress),
 
-        deleteAddress: (id) => ApiService.delete(`${API_BASE}/addresses/${id}`)
+        deleteAddress: (id) => ApiService.delete(`/addresses/${id}`)
     };
 });

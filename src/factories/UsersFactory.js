@@ -1,17 +1,17 @@
-angular.module('cpLib').factory('UsersFactory', function(ApiService, API_BASE) {
+angular.module('cpLib').factory('UsersFactory', function(ApiService) {
     return {
-        getAllUsers: () => ApiService.get(`${API_BASE}/users`),
+        getAllUsers: () => ApiService.get(`/users`),
 
-        masqueradeAsUser: id => ApiService.post(`${API_BASE}/user/masquerade`, {id: id}),
+        masqueradeAsUser: id => ApiService.post(`/user/masquerade`, {id: id}),
 
-        getLoggedInUser: () => ApiService.get(`${API_BASE}/users/get-authenticated-user`),
+        getLoggedInUser: () => ApiService.get(`/users/get-authenticated-user`),
 
-        registerVendor: registerDetails => ApiService.post(`${API_BASE}/user/register-vendor`, registerDetails),
+        registerVendor: registerDetails => ApiService.post(`/user/register-vendor`, registerDetails),
 
-        changeOwnPassword: passwords => ApiService.put(`${API_BASE}/user/self/change-password`, passwords),
+        changeOwnPassword: passwords => ApiService.put(`/user/self/change-password`, passwords),
 
-        getPaymentCards: () => ApiService.get(`${API_BASE}/payment-cards`),
+        getPaymentCards: () => ApiService.get(`/payment-cards`),
 
-        addPaymentCard: (cardDetails) => ApiService.post(`${API_BASE}/payment-cards`, cardDetails)
+        addPaymentCard: (cardDetails) => ApiService.post(`/payment-cards`, cardDetails)
     };
 });

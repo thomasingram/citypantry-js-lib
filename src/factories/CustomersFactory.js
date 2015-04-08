@@ -1,14 +1,14 @@
-angular.module('cpLib').factory('CustomersFactory', function(ApiService, API_BASE, $q) {
+angular.module('cpLib').factory('CustomersFactory', function(ApiService, $q) {
     return {
-        getAllCustomers: () => ApiService.get(`${API_BASE}/customers`),
+        getAllCustomers: () => ApiService.get(`/customers`),
 
-        getCustomer: id => ApiService.get(`${API_BASE}/customers/${id}`),
+        getCustomer: id => ApiService.get(`/customers/${id}`),
 
-        updateCustomer: (id, updatedCustomer) => ApiService.put(`${API_BASE}/customers/${id}`, updatedCustomer),
+        updateCustomer: (id, updatedCustomer) => ApiService.put(`/customers/${id}`, updatedCustomer),
 
-        updateSelf: attributes => ApiService.put(`${API_BASE}/customers/self`, attributes),
+        updateSelf: attributes => ApiService.put(`/customers/self`, attributes),
 
-        getAddresses: () => ApiService.get(`${API_BASE}/addresses`),
+        getAddresses: () => ApiService.get(`/addresses`),
 
         getAddressById: id => {
             const pluckMatchingAddress = response => {
@@ -23,15 +23,15 @@ angular.module('cpLib').factory('CustomersFactory', function(ApiService, API_BAS
                 }
             };
 
-            return ApiService.get(`${API_BASE}/addresses`).then(pluckMatchingAddress);
+            return ApiService.get(`/addresses`).then(pluckMatchingAddress);
         },
 
-        updatePayOnAccountDetails: (payOnAccountDetails) => ApiService.put(`${API_BASE}/customers/pay-on-account`, payOnAccountDetails),
+        updatePayOnAccountDetails: (payOnAccountDetails) => ApiService.put(`/customers/pay-on-account`, payOnAccountDetails),
 
-        approveRequestToPayOnAccount: (id) => ApiService.put(`${API_BASE}/customers/${id}/approve-request-to-pay-on-account`),
+        approveRequestToPayOnAccount: (id) => ApiService.put(`/customers/${id}/approve-request-to-pay-on-account`),
 
-        rejectRequestToPayOnAccount: (id) => ApiService.put(`${API_BASE}/customers/${id}/reject-request-to-pay-on-account`),
+        rejectRequestToPayOnAccount: (id) => ApiService.put(`/customers/${id}/reject-request-to-pay-on-account`),
 
-        revokePaymentOnAccount: (id) => ApiService.put(`${API_BASE}/customers/${id}/revoke-payment-on-account`)
+        revokePaymentOnAccount: (id) => ApiService.put(`/customers/${id}/revoke-payment-on-account`)
     };
 });

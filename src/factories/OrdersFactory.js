@@ -1,28 +1,28 @@
-angular.module('cpLib').factory('OrdersFactory', function(API_BASE, ApiService) {
+angular.module('cpLib').factory('OrdersFactory', function(ApiService) {
     return {
-        getAllOrders: () => ApiService.get(`${API_BASE}/orders`),
+        getAllOrders: () => ApiService.get(`/orders`),
 
-        getOrdersByCurrentVendor: () => ApiService.get(`${API_BASE}/orders/by-current-vendor`),
+        getOrdersByCurrentVendor: () => ApiService.get(`/orders/by-current-vendor`),
 
-        getOrdersByCurrentCustomer: () => ApiService.get(`${API_BASE}/orders/by-current-customer`),
+        getOrdersByCurrentCustomer: () => ApiService.get(`/orders/by-current-customer`),
 
-        getOrder: (id) => ApiService.get(`${API_BASE}/orders/${id}`),
+        getOrder: (id) => ApiService.get(`/orders/${id}`),
 
-        getOrderMessages: (id) => ApiService.get(`${API_BASE}/orders/${id}/messages`),
+        getOrderMessages: (id) => ApiService.get(`/orders/${id}/messages`),
 
-        sendMessage: (id, message) => ApiService.put(`${API_BASE}/orders/${id}/messages`, {message: message}),
+        sendMessage: (id, message) => ApiService.put(`/orders/${id}/messages`, {message: message}),
 
-        updateOrder: (id, updatedOrder) => ApiService.put(`${API_BASE}/order/${id}`, updatedOrder),
+        updateOrder: (id, updatedOrder) => ApiService.put(`/order/${id}`, updatedOrder),
 
-        deleteOrder: (id, reason = '') => ApiService.delete(`${API_BASE}/order/${id}?deletionReason=${reason}`),
+        deleteOrder: (id, reason = '') => ApiService.delete(`/order/${id}?deletionReason=${reason}`),
 
-        getCourierOrders: () => ApiService.get(`${API_BASE}/orders/courier`),
+        getCourierOrders: () => ApiService.get(`/orders/courier`),
 
-        addCustomerServiceEvent: (id, event) => ApiService.post(`${API_BASE}/order/${id}/customer-service-events`, {event: event}),
+        addCustomerServiceEvent: (id, event) => ApiService.post(`/order/${id}/customer-service-events`, {event: event}),
 
-        acceptOrder: (id) => ApiService.put(`${API_BASE}/order/${id}/accept`),
+        acceptOrder: (id) => ApiService.put(`/order/${id}/accept`),
 
-        addOrderReview: (id, review) => ApiService.post(`${API_BASE}/reviews/order/${id}`, {review: review}),
+        addOrderReview: (id, review) => ApiService.post(`/reviews/order/${id}`, {review: review}),
 
         getHeadCountOptions(maxPeople = 1, minPeople = 1) {
             if (maxPeople === null) {
@@ -41,16 +41,16 @@ angular.module('cpLib').factory('OrdersFactory', function(API_BASE, ApiService) 
             return options;
         },
 
-        getAllCustomerInvoices: () => ApiService.get(`${API_BASE}/orders/customer-invoices`),
+        getAllCustomerInvoices: () => ApiService.get(`/orders/customer-invoices`),
 
-        getCustomerInvoice: (id) => ApiService.get(`${API_BASE}/orders/customer-invoice/${id}`),
+        getCustomerInvoice: (id) => ApiService.get(`/orders/customer-invoice/${id}`),
 
-        getCustomerInvoiceAsHtml: (id) => ApiService.get(`${API_BASE}/orders/customer-invoice-as-html/${id}`),
+        getCustomerInvoiceAsHtml: (id) => ApiService.get(`/orders/customer-invoice-as-html/${id}`),
 
-        updateCustomerInvoiceStatus: (id, status) => ApiService.put(`${API_BASE}/orders/customer-invoice/${id}/status`, {status: status}),
+        updateCustomerInvoiceStatus: (id, status) => ApiService.put(`/orders/customer-invoice/${id}/status`, {status: status}),
 
-        refundOrder: (id, refundDetails) => ApiService.put(`${API_BASE}/order/${id}/refund`, refundDetails),
+        refundOrder: (id, refundDetails) => ApiService.put(`/order/${id}/refund`, refundDetails),
 
-        getOrderInvoices: (orderId) => ApiService.get(`${API_BASE}/orders/customer-invoices-by-order/${orderId}`)
+        getOrderInvoices: (orderId) => ApiService.get(`/orders/customer-invoices-by-order/${orderId}`)
     };
 });

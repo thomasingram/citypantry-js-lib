@@ -1,5 +1,5 @@
-angular.module('cpLib').factory('QuoteFactory', function(ApiService, API_BASE) {
+angular.module('cpLib').factory('QuoteFactory', function(ApiService) {
     return {
-        sendQuote: quoteDetails => ApiService.post(`${API_BASE}/quote/send-quote`, quoteDetails)
+        sendQuote: quoteDetails => ApiService.post(`/quote/send-quote`, quoteDetails)
     };
 });

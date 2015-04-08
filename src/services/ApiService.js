@@ -1,4 +1,4 @@
-angular.module('cpLib').service('ApiService', function($http, ApiAuthService) {
+angular.module('cpLib').service('ApiService', function($http, ApiAuthService, API_BASE) {
     function addAuthHeaders(config = {}) {
         config.headers = config.headers || {};
         config.headers['X-CityPantry-UserId'] = ApiAuthService().userId;
@@ -11,25 +11,25 @@ angular.module('cpLib').service('ApiService', function($http, ApiAuthService) {
         get: function(url, config) {
             config = addAuthHeaders(config);
 
-            return $http.get(url, config);
+            return $http.get(API_BASE + url, config);
         },
 
         post: function(url, data, config) {
             config = addAuthHeaders(config);
 
-            return $http.post(url, data, config);
+            return $http.post(API_BASE + url, data, config);
         },
 
         put: function(url, data, config) {
             config = addAuthHeaders(config);
 
-            return $http.put(url, data, config);
+            return $http.put(API_BASE + url, data, config);
         },
 
         'delete': function(url, config) {
             config = addAuthHeaders(config);
 
-            return $http.delete(url, config);
+            return $http.delete(API_BASE + url, config);
         },
 
         getAuthHeaders: function() {
