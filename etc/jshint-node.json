@@ -18,6 +18,7 @@
         "expect": false,
         "beforeEach": false,
         "afterEach": false,
+        "spyOn": false,
         "inject": false
     }
 }
