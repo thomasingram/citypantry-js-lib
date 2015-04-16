@@ -63,26 +63,6 @@ angular.module('cpLib').factory('PackagesFactory', function(ApiService,
             ];
         },
 
-        getDeliveryTimeOptions: () => {
-            var minutes = 0;
-
-            const options = [];
-
-            while (minutes < 60 * 24) {
-                let hour = ('0' + Math.floor(minutes / 60)).slice(-2);
-                let minute = ('0' + minutes % 60).slice(-2);
-
-                options.push({
-                    label: hour + ':' + minute,
-                    value: parseInt(hour + minute, 10)
-                });
-
-                minutes += 30;
-            }
-
-            return options;
-        },
-
         getNoticeOptions: () => {
             return [
                 { label: '1 hour',   value: 1 },
@@ -150,6 +130,15 @@ angular.module('cpLib').factory('PackagesFactory', function(ApiService,
             return [1, 2, 3].map(value => ({ value, label: getPackagingTypeTextFilter(value) }));
         },
 
+        /**
+         * The 'start' and 'end' parameters should be the time in 24-hour clock as an integer,
+         * e.g. 730 for 07:30, or 2330 for 23:30.
+         *
+         * @param  {Number} start
+         * @param  {Number} end
+         * @param  {Number} interval
+         * @return {Array}
+         */
         getPackageDeliveryTimeOptions: (start, end, interval = 15) => {
             let startMinutes = (Math.floor(start / 100) * 60) + (start % 100);
             let endMinutes = (Math.floor(end / 100) * 60) + (end % 100);
