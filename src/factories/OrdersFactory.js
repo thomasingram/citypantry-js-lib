@@ -51,6 +51,8 @@ angular.module('cpLib').factory('OrdersFactory', function(ApiService) {
 
         refundOrder: (id, refundDetails) => ApiService.put(`/order/${id}/refund`, refundDetails),
 
-        getOrderInvoices: (orderId) => ApiService.get(`/orders/customer-invoices-by-order/${orderId}`)
+        getOrderInvoices: (orderId) => ApiService.get(`/orders/customer-invoices-by-order/${orderId}`),
+
+        createOrder: orderDetails => ApiService.post(`/orders`, orderDetails)
     };
 });
