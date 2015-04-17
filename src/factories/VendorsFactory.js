@@ -32,6 +32,8 @@ angular.module('cpLib').factory('VendorsFactory', function(ApiService, $q) {
 
         deleteVendor: (id) => ApiService.delete(`/vendors/${id}`),
 
-        approveVendor: (id) => ApiService.put(`/vendors/${id}/approve`)
+        approveVendor: (id) => ApiService.put(`/vendors/${id}/approve`),
+
+        getHolidays: () => ApiService.get(`/holidays`)
     };
 });
