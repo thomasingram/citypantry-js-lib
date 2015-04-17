@@ -34,6 +34,12 @@ angular.module('cpLib').factory('VendorsFactory', function(ApiService, $q) {
 
         approveVendor: (id) => ApiService.put(`/vendors/${id}/approve`),
 
-        getHolidays: () => ApiService.get(`/holidays`)
+        getHolidays: () => ApiService.get(`/holidays`),
+
+        /**
+         * @param {String} start Formatted as 'YYYY-MM-DD'.
+         * @param {String} end   Formatted as 'YYYY-MM-DD'.
+         */
+        createHoliday: (start, end) => ApiService.post(`/holidays`, {start: start, end: end})
     };
 });
