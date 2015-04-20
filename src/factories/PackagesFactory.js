@@ -13,8 +13,15 @@ angular.module('cpLib').factory('PackagesFactory', function(ApiService,
 
         deletePackage: id => ApiService.delete(`/packages/${id}`),
 
+        /**
+         * @param {Promise} timeoutPromise Optional promise that is passed to the $http service as
+         *                                  it's `timeout` config option. This is used to cancel a
+         *                                  search if a new search request is started before the
+         *                                  previous request returns.
+         */
         searchPackages(name = '', postcode = '', maxBudget = '', headCount = '', time = '', date = '',
-                eventTypeIds = [], cuisineTypeIds = [], dietaryRequirementIds = [], packagingType = '') {
+                eventTypeIds = [], cuisineTypeIds = [], dietaryRequirementIds = [], packagingType = '',
+                timeoutPromise = undefined) {
             let url = `/packages/search?name=${name}&postcode=${postcode}` +
                 `&maxBudget=${maxBudget}&headCount=${headCount}&time=${time}&date=${date}&packagingType=${packagingType}`;
 
@@ -30,7 +37,7 @@ angular.module('cpLib').factory('PackagesFactory', function(ApiService,
                 url += `&dietaryRequirementIds[]=${dietaryRequirementId}`;
             });
 
-            return ApiService.get(url);
+            return ApiService.get(url, {timeout: timeoutPromise});
         },
 
         getPackagesByVendor: id => ApiService.get(`/packages/search/all?vendorId=${id}`),
