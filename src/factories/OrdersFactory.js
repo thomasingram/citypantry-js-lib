@@ -22,7 +22,7 @@ angular.module('cpLib').factory('OrdersFactory', function(ApiService) {
 
         acceptOrder: (id) => ApiService.put(`/order/${id}/accept`),
 
-        addOrderReview: (id, review) => ApiService.post(`/reviews/order/${id}`, {review: review}),
+        addOrderReview: (id, review) => ApiService.post(`/reviews/order/${id}`, review),
 
         getHeadCountOptions(maxPeople = 1, minPeople = 1) {
             if (maxPeople === null) {
