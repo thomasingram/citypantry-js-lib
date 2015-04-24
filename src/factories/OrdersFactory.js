@@ -1,10 +1,45 @@
 angular.module('cpLib').factory('OrdersFactory', function(ApiService) {
+    // Cache of Date objects, to avoid having to create a new Date object many times when running
+    // an array filter or sort.
+    const dateObjectCache = {};
+
+    const getDateObject = (date) => {
+        if (dateObjectCache[date] === undefined) {
+            dateObjectCache[date] = new Date(date);
+        }
+
+        return dateObjectCache[date];
+    };
+
     return {
         getAllOrders: () => ApiService.get(`/orders`),
 
         getOrdersByCurrentVendor: () => ApiService.get(`/orders/by-current-vendor`),
 
         getOrdersByCurrentCustomer: () => ApiService.get(`/orders/by-current-customer`),
+
+        /**
+         * Get the next order for a customer, which can have either the status 'pending vendor
+         * approval' or 'accepted'.
+         *
+         * @return {Promise} Resolves to an order, or null if there is none.
+         */
+        getNextCustomerOrder() {
+            return this.getOrdersByCurrentCustomer()
+                .then((response) => {
+                    const orders = response.data.orders;
+                    if (orders.length === 0) {
+                        return null;
+                    }
+
+                    const now = new Date();
+
+                    return orders.filter((order) => order.statusText !== 'not_placed')
+                        .filter((order) => getDateObject(order.requestedDeliveryDate) >= now)
+                        .sort((a, b) => getDateObject(a.requestedDeliveryDate) - getDateObject(b.requestedDeliveryDate))
+                        .shift();
+                });
+        },
 
         getOrder: (id) => ApiService.get(`/orders/${id}`),
 
