@@ -1,5 +1,5 @@
 angular.module('cpLib').factory('PackagesFactory', function(ApiService,
-        getPackagingTypeTextFilter) {
+        getPackagingTypeTextFilter, getPackagingTypeChoiceTextFilter) {
     return {
         getAllPackages: () => ApiService.get(`/packages`),
 
@@ -135,6 +135,10 @@ angular.module('cpLib').factory('PackagesFactory', function(ApiService,
 
         getPackagingTypeOptions: () => {
             return [1, 2, 3].map(value => ({ value, label: getPackagingTypeTextFilter(value) }));
+        },
+
+        getPackagingTypeChoiceOptions: () => {
+            return [1, 2, 3].map(value => ({ value, label: getPackagingTypeChoiceTextFilter(value) }));
         },
 
         /**
