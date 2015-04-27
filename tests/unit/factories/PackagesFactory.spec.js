@@ -21,7 +21,7 @@ describe('PackagesFactory', function () {
         });
 
         it('should return three packaging types', function() {
-            expect(result.length).toBe(3);
+            expect(result.length).toBe(5);
         });
 
         it('should return objects with a value and the related text label', function() {

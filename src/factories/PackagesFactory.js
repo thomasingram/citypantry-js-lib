@@ -134,7 +134,7 @@ angular.module('cpLib').factory('PackagesFactory', function(ApiService,
         },
 
         getPackagingTypeOptions: () => {
-            return [1, 2, 3].map(value => ({ value, label: getPackagingTypeTextFilter(value) }));
+            return [1, 2, 3, 4, 5].map(value => ({ value, label: getPackagingTypeTextFilter(value) }));
         },
 
         getPackagingTypeChoiceOptions: () => {
