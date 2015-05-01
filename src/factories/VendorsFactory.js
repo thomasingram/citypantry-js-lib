@@ -40,6 +40,8 @@ angular.module('cpLib').factory('VendorsFactory', function(ApiService, $q) {
          * @param {String} start Formatted as 'YYYY-MM-DD'.
          * @param {String} end   Formatted as 'YYYY-MM-DD'.
          */
-        createHoliday: (start, end) => ApiService.post(`/holidays`, {start: start, end: end})
+        createHoliday: (start, end) => ApiService.post(`/holidays`, {start: start, end: end}),
+
+        acceptSupplierAgreement: () => ApiService.put(`/vendors/accept-supplier-agreement`)
     };
 });
