@@ -44,6 +44,8 @@ angular.module('cpLib').factory('VendorsFactory', function(ApiService, $q) {
 
         getLatestSupplierAgreement: () => ApiService.get(`/supplier-agreement`),
 
+        getAllSupplierAgreements: () => ApiService.get(`/supplier-agreements`),
+
         acceptSupplierAgreement: (id) => ApiService.put(`/supplier-agreement/${id}/accept`)
     };
 });
