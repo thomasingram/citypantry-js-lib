@@ -1,4 +1,11 @@
 angular.module('cpLib').filter('dateIsBSTInEffect', function() {
+    /**
+     * This filter returns whether the date passed is inside British Summer Time. The timezone attached
+     * to the date passed is ignored.
+     *
+     * @param  {String|Date} date
+     * @return {Boolean}
+     */
     return (date) => {
         if (typeof date === 'string') {
             date = new Date(Date.parse(date));
