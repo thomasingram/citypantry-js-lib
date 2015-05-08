@@ -4,7 +4,7 @@ angular.module('cpLib').factory('UsersFactory', function(ApiService) {
 
         masqueradeAsUser: id => ApiService.post(`/user/masquerade`, {id: id}),
 
-        getLoggedInUser: () => ApiService.get(`/users/get-authenticated-user`),
+        getLoggedInUser: (id, oneTimeAuthToken) => ApiService.get(`/users/get-authenticated-user?userId=${id}&otat=${oneTimeAuthToken}`),
 
         registerVendor: registerDetails => ApiService.post(`/user/register-vendor`, registerDetails),
 
