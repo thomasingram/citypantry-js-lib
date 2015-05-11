@@ -26,6 +26,8 @@ angular.module('cpLib').factory('VendorsFactory', function(ApiService, $q) {
 
         getBusinessTypes: () => ApiService.get(`/business-types`),
 
+        getVendorReviews: (id) => ApiService.get(`/reviews/vendor/${id}`),
+
         updateVendor: (id, updatedVendor) => ApiService.put(`/vendors/${id}`, updatedVendor),
 
         updateSelf: (updatedVendor) => ApiService.put(`/vendors/me`, updatedVendor),

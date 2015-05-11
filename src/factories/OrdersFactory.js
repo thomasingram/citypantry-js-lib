@@ -45,6 +45,8 @@ angular.module('cpLib').factory('OrdersFactory', function(ApiService) {
 
         getOrderMessages: (id) => ApiService.get(`/orders/${id}/messages`),
 
+        getOrderReviews: (id) => ApiService.get(`/reviews/order/${id}`),
+
         sendMessage: (id, message) => ApiService.put(`/orders/${id}/messages`, {message: message}),
 
         updateOrder: (id, updatedOrder) => ApiService.put(`/order/${id}`, updatedOrder),
