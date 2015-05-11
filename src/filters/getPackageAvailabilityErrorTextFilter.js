@@ -10,7 +10,7 @@ angular.module('cpLib').filter('getPackageAvailabilityErrorText', function() {
             return 'This meal cannot be delivered at this time.';
         } else if (!availability.isEnoughNotice) {
             return 'The vendor needs more notice to deliver at this time.';
-        } else if (!availability.isVendorOnHoliday) {
+        } else if (availability.isVendorOnHoliday) {
             return 'The vendor is on holiday on that date.';
         } else {
             throw new Error('Unknown error: isPostcodeOk: ' + availability.isPostcodeOk +
