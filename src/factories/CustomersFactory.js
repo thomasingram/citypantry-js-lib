@@ -26,6 +26,8 @@ angular.module('cpLib').factory('CustomersFactory', function(ApiService, $q) {
             return ApiService.get(`/addresses`).then(pluckMatchingAddress);
         },
 
+        getCustomerReviews: (id) => ApiService.get(`/reviews/customer/${id}`),
+
         updatePayOnAccountDetails: (payOnAccountDetails) => ApiService.put(`/customers/pay-on-account`, payOnAccountDetails),
 
         setUpRequestToPayOnAccount: (id) => ApiService.put(`/customers/${id}/set-up-request-to-pay-on-account`),

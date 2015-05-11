@@ -9,7 +9,7 @@
     "install-pre-commit": "ln -s ../../bin/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit"
   },
   "url": "https://citypantry.com/",
-  "version": "1.0.34",
+  "version": "1.0.35",
   "copyright": "2015",
   "dependencies": {
   },
