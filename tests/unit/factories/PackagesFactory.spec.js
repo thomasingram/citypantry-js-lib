@@ -69,4 +69,16 @@ describe('PackagesFactory', function () {
             expect(result[4]).toEqual({label: '24:00', value: 2400});
         });
     });
+
+    describe('getNoticeOptions', function() {
+        it('should return notice options', function() {
+            var result = PackagesFactory.getNoticeOptions();
+            expect(result.pop().label).toEqual('14 days');
+        });
+
+        it('should return capped notice options if the options are for a meal plan package', function() {
+            var result = PackagesFactory.getNoticeOptions(true);
+            expect(result.pop().label).toEqual('24 hours');
+        });
+    });
 });
