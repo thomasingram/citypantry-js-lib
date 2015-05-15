@@ -1,6 +1,6 @@
-angular.module('cpLib').filter('getMealPlanStatusText', function() {
-    return function(mealPlanStatus) {
-        switch (mealPlanStatus) {
+angular.module('cpLib').filter('getCustomerMealPlanStatusText', function() {
+    return function(customerMealPlanStatus) {
+        switch (customerMealPlanStatus) {
             case 1:
                 return 'None';
             case 2:
@@ -12,7 +12,7 @@ angular.module('cpLib').filter('getMealPlanStatusText', function() {
             case 5:
                 return 'Active';
             default:
-                throw 'Unexpected mealPlanStatus: ' + mealPlanStatus;
+                throw 'Unexpected customerMealPlanStatus: ' + customerMealPlanStatus;
         }
     };
 });
