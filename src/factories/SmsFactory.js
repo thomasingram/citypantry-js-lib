@@ -4,8 +4,8 @@ angular.module('cpLib').factory('SmsFactory', function (ApiService) {
 
         sendSms: (sms) => ApiService.post(`/sms`, sms),
 
-        getSmsHistory: () => ApiService.get(`/sms/all`),
+        getSmsHistory: () => ApiService.get(`/sms`),
 
-        getAllSmsByNumber: (number) => ApiService.get(`/sms/${number}`)
+        getAllSmsByNumber: (number) => ApiService.get(`/sms/${number}/all`)
     };
 });
