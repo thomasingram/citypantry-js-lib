@@ -1,5 +1,6 @@
-angular.module('cpLib').factory('PackagesFactory', function(ApiService,
-        getPackagingTypeTextFilter, getPackagingTypeChoiceTextFilter) {
+angular.module('cpLib').factory('PackagesFactory',
+        function(ApiService, getPackagingTypeTextFilter, getPackagingTypeChoiceTextFilter,
+        getPackageDispositionTextFilter) {
     return {
         getAllPackages: () => ApiService.get(`/packages`),
 
@@ -189,6 +190,10 @@ angular.module('cpLib').factory('PackagesFactory', function(ApiService,
 
         checkIfPackageCanBeDelivered: (id, date, time, postcode) => ApiService.get(`/packages/${id}/availability?date=${date}&time=${time}&postcode=${postcode}`),
 
-        getRecommendedPackage: () => ApiService.get(`/packages/one-recommended`)
+        getRecommendedPackage: () => ApiService.get(`/packages/one-recommended`),
+
+        getPackageDispositionOptions: () => {
+            return [1, 2].map(value => ({ value, label: getPackageDispositionTextFilter(value) }));
+        }
     };
 });

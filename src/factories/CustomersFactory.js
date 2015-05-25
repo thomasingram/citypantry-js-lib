@@ -30,7 +30,7 @@ angular.module('cpLib').factory('CustomersFactory', function(ApiService, $q) {
 
         updatePayOnAccountDetails: (payOnAccountDetails) => ApiService.put(`/customers/pay-on-account`, payOnAccountDetails),
 
-        setUpRequestToPayOnAccount: (id) => ApiService.put(`/customers/${id}/set-up-request-to-pay-on-account`),
+        setUpRequestToPayOnAccount: (id, payOnAccountDetails) => ApiService.put(`/customers/${id}/set-up-request-to-pay-on-account`, payOnAccountDetails),
 
         revokePaymentOnAccount: (id) => ApiService.put(`/customers/${id}/revoke-payment-on-account`)
     };

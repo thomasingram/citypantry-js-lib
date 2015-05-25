@@ -4,10 +4,14 @@ angular.module('cpLib').factory('AddressFactory', function(ApiService) {
 
         getAddressesByVendorId: (id) => ApiService.get(`/addresses/vendor/${id}`),
 
-        createAddress: (address) => ApiService.post(`/addresses`, {address: address}),
+        getAddressesByCustomerId: (id) => ApiService.get(`/addresses/customer/${id}`),
+
+        createAddress: (address, customerId = '') => ApiService.post(`/addresses`, {address: address, customerId: customerId}),
 
         updateAddress: (id, updatedAddress) => ApiService.put(`/addresses/${id}`, updatedAddress),
 
-        deleteAddress: (id) => ApiService.delete(`/addresses/${id}`)
+        deleteAddress: (id) => ApiService.delete(`/addresses/${id}`),
+
+        createBillingAddress: (address, customerId = '') => ApiService.post(`/addresses/billing-address`, {address: address, customerId: customerId})
     };
 });
